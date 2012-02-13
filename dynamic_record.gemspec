@@ -22,12 +22,15 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'active_record', '>= 3.1'
-  s.add_dependency 'active_support', '>= 3.1'
+  s.add_dependency 'activerecord', '>= 3.1'
+  s.add_dependency 'activesupport', '>= 3.1'
   s.add_dependency 'mysql2'
   
   s.add_development_dependency 'spork'
   s.add_development_dependency 'ruby-debug'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'pry'
+  s.add_development_dependency 'database_cleaner'
+  s.add_development_dependency 'term-ansicolor'
+  s.add_development_dependency 'factory_girl'
 end

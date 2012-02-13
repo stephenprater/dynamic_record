@@ -42,6 +42,8 @@ module DynamicRecord
         
         table_name = self.name.split(/\s/).map { |i| i.underscore.pluralize }.join('_')
 
+        # I need to futze about with the table name so that it's propery sanitized.
+
         if ids
           table_name = ActiveRecord::Base.sanitize(table_name)
           update_table = "UPDATE `#{table_name}` SET"
@@ -65,13 +67,20 @@ module DynamicRecord
           update_table = "CREATE TABLE `#{table_name + '_new'}` (#{columns}) AS (#{view_select})"
         end
 
-        self.class.transaction do
+        begin
+          #mysql does not suport transactional ddl, so we have to write our own
+          #facility for recovering if we screw it up
           self.class.connection.execute("DROP TABLE IF EXISTS `#{table_name}_new`")
           self.class.connection.execute(update_table)
           self.class.connection.execute("CREATE TABLE IF NOT EXISTS `#{table_name}` (dummy INT(11))")
           self.class.connection.execute("DROP TABLE IF EXISTS `#{table_name}_old`")
           self.class.connection.execute("RENAME TABLE `#{table_name}` TO `#{table_name + '_old'}`,`#{table_name + '_new'}` TO `#{table_name}`")
           self.class.connection.execute("DROP TABLE `#{table_name + '_old'}`")
+        rescue ActiveRecord::StatementInvalid => e
+          self.class.connection.execute("DROP TABLE IF EXISTS `#{table_name}_new`")
+          self.class.connection.execute("DROP TABLE IF EXISTS `#{table_name}_old")
+          self.class.connection.execute("DROP TABLE IF EXISTS `#{table_name}")
+          raise MaterializationError, e.message
         end
       end
     end

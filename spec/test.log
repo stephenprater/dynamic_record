@@ -1,0 +1,171 @@
+# Logfile created on Mon Feb 13 14:58:00 -0600 2012 by logger.rb/1.2.6
+D, [2012-02-13T16:11:14.302393 #78330] DEBUG -- :   [1m[36m (494.8ms)[0m  [1mCREATE TABLE `dynamic_record_classes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime, `behavior_module` varchar(255)) ENGINE=InnoDB[0m
+D, [2012-02-13T16:11:14.404447 #78330] DEBUG -- :   [1m[35m (64.2ms)[0m  CREATE TABLE `dynamic_record_field_description` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `field_name` varchar(255), `field_kind` varchar(255), `validator` varchar(255), `created_at` datetime, `updated_at` datetime, `valid_choices` text, `css_form_class` varchar(255), `priority` int(11), `title_field` tinyint(1), `css_value_class` varchar(255), `valid_choice_size_rows` int(11) DEFAULT 0, `valid_choice_size_cols` int(11) DEFAULT 0, `valid_choices_size_rows` int(11) DEFAULT 0, `valid_choices_size_cols` int(11) DEFAULT 0) ENGINE=InnoDB
+D, [2012-02-13T16:11:14.545667 #78330] DEBUG -- :   [1m[36m (138.2ms)[0m  [1mCREATE TABLE `dynamic_record_fields` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_id` int(11), `record_field_description_id` int(11), `created_at` datetime, `updated_at` datetime, `value_id` int(11), `value_type` varchar(255)) ENGINE=InnoDB[0m
+D, [2012-02-13T16:11:14.748202 #78330] DEBUG -- :   [1m[35m (199.8ms)[0m  CREATE TABLE `dynamic_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `created_at` datetime, `updated_at` datetime, `global` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:11:15.003652 #78330] DEBUG -- :   [1m[36m (252.6ms)[0m  [1mCREATE TABLE `dynamic_records_values_binaries` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` blob) ENGINE=InnoDB[0m
+D, [2012-02-13T16:11:15.095002 #78330] DEBUG -- :   [1m[35m (88.5ms)[0m  CREATE TABLE `dynamic_records_values_booleans` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:11:15.244000 #78330] DEBUG -- :   [1m[36m (145.3ms)[0m  [1mCREATE TABLE `dynamic_records_values_datetimes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` datetime) ENGINE=InnoDB[0m
+D, [2012-02-13T16:11:15.417386 #78330] DEBUG -- :   [1m[35m (170.8ms)[0m  CREATE TABLE `dynamic_records_values_decimals` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` decimal(10,0)) ENGINE=InnoDB
+D, [2012-02-13T16:11:15.644548 #78330] DEBUG -- :   [1m[36m (224.4ms)[0m  [1mCREATE TABLE `dynamic_records_values_floats` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` float) ENGINE=InnoDB[0m
+D, [2012-02-13T16:11:15.765884 #78330] DEBUG -- :   [1m[35m (118.5ms)[0m  CREATE TABLE `dynamic_records_values_integers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` int(11)) ENGINE=InnoDB
+D, [2012-02-13T16:11:15.908064 #78330] DEBUG -- :   [1m[36m (138.2ms)[0m  [1mCREATE TABLE `dynamic_records_values_strings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` varchar(255)) ENGINE=InnoDB[0m
+D, [2012-02-13T16:11:16.049792 #78330] DEBUG -- :   [1m[35m (138.5ms)[0m  CREATE TABLE `dynamic_records_values_texts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` text) ENGINE=InnoDB
+D, [2012-02-13T16:11:16.173923 #78330] DEBUG -- :   [1m[36m (121.5ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+D, [2012-02-13T16:11:16.434525 #78330] DEBUG -- :   [1m[35m (258.7ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+D, [2012-02-13T16:11:16.437467 #78330] DEBUG -- :   [1m[36m (0.7ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+D, [2012-02-13T16:11:16.438966 #78330] DEBUG -- :   [1m[35m (0.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('1')
+D, [2012-02-13T16:11:16.479163 #78330] DEBUG -- :   [1m[36m (0.5ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+D, [2012-02-13T16:11:16.497758 #78330] DEBUG -- :   [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+D, [2012-02-13T16:11:16.499575 #78330] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mSELECT DATABASE() as db[0m
+D, [2012-02-13T16:11:16.546678 #78330] DEBUG -- :   [1m[35m (46.7ms)[0m  select table_name from information_schema.views where table_schema = 'dynamic_record_test_db'
+D, [2012-02-13T16:11:16.549061 #78330] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mTRUNCATE TABLE `dynamic_record_classes`;[0m
+D, [2012-02-13T16:11:16.551481 #78330] DEBUG -- :   [1m[35m (1.9ms)[0m  TRUNCATE TABLE `dynamic_record_field_description`;
+D, [2012-02-13T16:11:16.553830 #78330] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mTRUNCATE TABLE `dynamic_record_fields`;[0m
+D, [2012-02-13T16:11:16.559237 #78330] DEBUG -- :   [1m[35m (4.8ms)[0m  TRUNCATE TABLE `dynamic_records`;
+D, [2012-02-13T16:11:16.563221 #78330] DEBUG -- :   [1m[36m (3.5ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_binaries`;[0m
+D, [2012-02-13T16:11:16.566167 #78330] DEBUG -- :   [1m[35m (2.4ms)[0m  TRUNCATE TABLE `dynamic_records_values_booleans`;
+D, [2012-02-13T16:11:16.568277 #78330] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_datetimes`;[0m
+D, [2012-02-13T16:11:16.570261 #78330] DEBUG -- :   [1m[35m (1.5ms)[0m  TRUNCATE TABLE `dynamic_records_values_decimals`;
+D, [2012-02-13T16:11:16.572108 #78330] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_floats`;[0m
+D, [2012-02-13T16:11:16.574078 #78330] DEBUG -- :   [1m[35m (1.5ms)[0m  TRUNCATE TABLE `dynamic_records_values_integers`;
+D, [2012-02-13T16:11:16.577088 #78330] DEBUG -- :   [1m[36m (2.5ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_strings`;[0m
+D, [2012-02-13T16:11:16.578875 #78330] DEBUG -- :   [1m[35m (1.4ms)[0m  TRUNCATE TABLE `dynamic_records_values_texts`;
+D, [2012-02-13T16:11:16.579322 #78330] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+D, [2012-02-13T16:12:10.059984 #78508] DEBUG -- :   [1m[36m (1.8ms)[0m  [1mDROP TABLE `dynamic_record_classes`[0m
+D, [2012-02-13T16:12:10.157925 #78508] DEBUG -- :   [1m[35m (97.1ms)[0m  CREATE TABLE `dynamic_record_classes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime, `behavior_module` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:12:10.163023 #78508] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mDROP TABLE `dynamic_record_field_description`[0m
+D, [2012-02-13T16:12:10.343353 #78508] DEBUG -- :   [1m[35m (112.4ms)[0m  CREATE TABLE `dynamic_record_field_description` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `field_name` varchar(255), `field_kind` varchar(255), `validator` varchar(255), `created_at` datetime, `updated_at` datetime, `valid_choices` text, `css_form_class` varchar(255), `priority` int(11), `title_field` tinyint(1), `css_value_class` varchar(255), `valid_choice_size_rows` int(11) DEFAULT 0, `valid_choice_size_cols` int(11) DEFAULT 0, `valid_choices_size_rows` int(11) DEFAULT 0, `valid_choices_size_cols` int(11) DEFAULT 0) ENGINE=InnoDB
+D, [2012-02-13T16:12:10.348073 #78508] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mDROP TABLE `dynamic_record_fields`[0m
+D, [2012-02-13T16:12:10.500597 #78508] DEBUG -- :   [1m[35m (151.8ms)[0m  CREATE TABLE `dynamic_record_fields` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_id` int(11), `record_field_description_id` int(11), `created_at` datetime, `updated_at` datetime, `value_id` int(11), `value_type` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:12:10.562687 #78508] DEBUG -- :   [1m[36m (59.3ms)[0m  [1mDROP TABLE `dynamic_records`[0m
+D, [2012-02-13T16:12:10.692245 #78508] DEBUG -- :   [1m[35m (128.8ms)[0m  CREATE TABLE `dynamic_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `created_at` datetime, `updated_at` datetime, `global` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:12:10.696905 #78508] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mDROP TABLE `dynamic_records_values_binaries`[0m
+D, [2012-02-13T16:12:10.833829 #78508] DEBUG -- :   [1m[35m (136.3ms)[0m  CREATE TABLE `dynamic_records_values_binaries` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` blob) ENGINE=InnoDB
+D, [2012-02-13T16:12:10.837720 #78508] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mDROP TABLE `dynamic_records_values_booleans`[0m
+D, [2012-02-13T16:12:10.973276 #78508] DEBUG -- :   [1m[35m (135.0ms)[0m  CREATE TABLE `dynamic_records_values_booleans` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:12:10.977377 #78508] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mDROP TABLE `dynamic_records_values_datetimes`[0m
+D, [2012-02-13T16:12:11.115059 #78508] DEBUG -- :   [1m[35m (137.1ms)[0m  CREATE TABLE `dynamic_records_values_datetimes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` datetime) ENGINE=InnoDB
+D, [2012-02-13T16:12:11.119135 #78508] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mDROP TABLE `dynamic_records_values_decimals`[0m
+D, [2012-02-13T16:12:11.248647 #78508] DEBUG -- :   [1m[35m (129.0ms)[0m  CREATE TABLE `dynamic_records_values_decimals` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` decimal(10,0)) ENGINE=InnoDB
+D, [2012-02-13T16:12:11.252740 #78508] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_records_values_floats`[0m
+D, [2012-02-13T16:12:11.390274 #78508] DEBUG -- :   [1m[35m (137.0ms)[0m  CREATE TABLE `dynamic_records_values_floats` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` float) ENGINE=InnoDB
+D, [2012-02-13T16:12:11.394489 #78508] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_records_values_integers`[0m
+D, [2012-02-13T16:12:11.547914 #78508] DEBUG -- :   [1m[35m (152.9ms)[0m  CREATE TABLE `dynamic_records_values_integers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` int(11)) ENGINE=InnoDB
+D, [2012-02-13T16:12:11.551312 #78508] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mDROP TABLE `dynamic_records_values_strings`[0m
+D, [2012-02-13T16:12:11.697633 #78508] DEBUG -- :   [1m[35m (145.8ms)[0m  CREATE TABLE `dynamic_records_values_strings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:12:11.701040 #78508] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mDROP TABLE `dynamic_records_values_texts`[0m
+D, [2012-02-13T16:12:11.839207 #78508] DEBUG -- :   [1m[35m (137.6ms)[0m  CREATE TABLE `dynamic_records_values_texts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` text) ENGINE=InnoDB
+D, [2012-02-13T16:12:11.842320 #78508] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+D, [2012-02-13T16:12:11.853991 #78508] DEBUG -- :   [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+D, [2012-02-13T16:12:11.856395 #78508] DEBUG -- :   [1m[36m (0.2ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+D, [2012-02-13T16:12:11.858014 #78508] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+D, [2012-02-13T16:12:11.861126 #78508] DEBUG -- :   [1m[36m (2.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'dynamic_record_test_db'[0m
+D, [2012-02-13T16:12:11.897870 #78508] DEBUG -- :   [1m[35m (36.2ms)[0m  TRUNCATE TABLE `dynamic_record_classes`;
+D, [2012-02-13T16:12:11.899789 #78508] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mTRUNCATE TABLE `dynamic_record_field_description`;[0m
+D, [2012-02-13T16:12:11.969746 #78508] DEBUG -- :   [1m[35m (69.6ms)[0m  TRUNCATE TABLE `dynamic_record_fields`;
+D, [2012-02-13T16:12:11.971451 #78508] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mTRUNCATE TABLE `dynamic_records`;[0m
+D, [2012-02-13T16:12:11.972806 #78508] DEBUG -- :   [1m[35m (1.1ms)[0m  TRUNCATE TABLE `dynamic_records_values_binaries`;
+D, [2012-02-13T16:12:11.974235 #78508] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_booleans`;[0m
+D, [2012-02-13T16:12:11.975728 #78508] DEBUG -- :   [1m[35m (1.1ms)[0m  TRUNCATE TABLE `dynamic_records_values_datetimes`;
+D, [2012-02-13T16:12:11.977294 #78508] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_decimals`;[0m
+D, [2012-02-13T16:12:11.978816 #78508] DEBUG -- :   [1m[35m (1.2ms)[0m  TRUNCATE TABLE `dynamic_records_values_floats`;
+D, [2012-02-13T16:12:11.980464 #78508] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_integers`;[0m
+D, [2012-02-13T16:12:11.982561 #78508] DEBUG -- :   [1m[35m (1.6ms)[0m  TRUNCATE TABLE `dynamic_records_values_strings`;
+D, [2012-02-13T16:12:11.984025 #78508] DEBUG -- :   [1m[36m (1.1ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_texts`;[0m
+D, [2012-02-13T16:12:11.984697 #78508] DEBUG -- :   [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+D, [2012-02-13T16:22:01.731760 #79516] DEBUG -- :   [1m[36m (84.5ms)[0m  [1mDROP TABLE `dynamic_record_classes`[0m
+D, [2012-02-13T16:22:02.018145 #79516] DEBUG -- :   [1m[35m (285.5ms)[0m  CREATE TABLE `dynamic_record_classes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime, `behavior_module` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:22:02.062567 #79516] DEBUG -- :   [1m[36m (40.2ms)[0m  [1mDROP TABLE `dynamic_record_field_description`[0m
+D, [2012-02-13T16:22:02.370520 #79516] DEBUG -- :   [1m[35m (199.0ms)[0m  CREATE TABLE `dynamic_record_field_description` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `field_name` varchar(255), `field_kind` varchar(255), `validator` varchar(255), `created_at` datetime, `updated_at` datetime, `valid_choices` text, `css_form_class` varchar(255), `priority` int(11), `title_field` tinyint(1), `css_value_class` varchar(255), `valid_choice_size_rows` int(11) DEFAULT 0, `valid_choice_size_cols` int(11) DEFAULT 0, `valid_choices_size_rows` int(11) DEFAULT 0, `valid_choices_size_cols` int(11) DEFAULT 0) ENGINE=InnoDB
+D, [2012-02-13T16:22:02.448361 #79516] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_record_fields`[0m
+D, [2012-02-13T16:22:02.682764 #79516] DEBUG -- :   [1m[35m (233.6ms)[0m  CREATE TABLE `dynamic_record_fields` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_id` int(11), `record_field_description_id` int(11), `created_at` datetime, `updated_at` datetime, `value_id` int(11), `value_type` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:22:02.696063 #79516] DEBUG -- :   [1m[36m (8.7ms)[0m  [1mDROP TABLE `dynamic_records`[0m
+D, [2012-02-13T16:22:03.035696 #79516] DEBUG -- :   [1m[35m (338.6ms)[0m  CREATE TABLE `dynamic_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `created_at` datetime, `updated_at` datetime, `global` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:22:03.039937 #79516] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mDROP TABLE `dynamic_records_values_binaries`[0m
+D, [2012-02-13T16:22:03.364610 #79516] DEBUG -- :   [1m[35m (323.7ms)[0m  CREATE TABLE `dynamic_records_values_binaries` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` blob) ENGINE=InnoDB
+D, [2012-02-13T16:22:03.397474 #79516] DEBUG -- :   [1m[36m (27.7ms)[0m  [1mDROP TABLE `dynamic_records_values_booleans`[0m
+D, [2012-02-13T16:23:14.551693 #80256] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mDROP TABLE `dynamic_record_classes`[0m
+D, [2012-02-13T16:23:14.866985 #80256] DEBUG -- :   [1m[35m (314.4ms)[0m  CREATE TABLE `dynamic_record_classes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime, `behavior_module` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:23:14.937533 #80256] DEBUG -- :   [1m[36m (53.8ms)[0m  [1mDROP TABLE `dynamic_record_field_description`[0m
+D, [2012-02-13T16:23:15.108634 #80256] DEBUG -- :   [1m[35m (100.1ms)[0m  CREATE TABLE `dynamic_record_field_description` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `field_name` varchar(255), `field_kind` varchar(255), `validator` varchar(255), `created_at` datetime, `updated_at` datetime, `valid_choices` text, `css_form_class` varchar(255), `priority` int(11), `title_field` tinyint(1), `css_value_class` varchar(255), `valid_choice_size_rows` int(11) DEFAULT 0, `valid_choice_size_cols` int(11) DEFAULT 0, `valid_choices_size_rows` int(11) DEFAULT 0, `valid_choices_size_cols` int(11) DEFAULT 0) ENGINE=InnoDB
+D, [2012-02-13T16:23:15.112732 #80256] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mDROP TABLE `dynamic_record_fields`[0m
+D, [2012-02-13T16:23:15.250699 #80256] DEBUG -- :   [1m[35m (137.2ms)[0m  CREATE TABLE `dynamic_record_fields` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_id` int(11), `record_field_description_id` int(11), `created_at` datetime, `updated_at` datetime, `value_id` int(11), `value_type` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:23:15.255075 #80256] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mDROP TABLE `dynamic_records`[0m
+D, [2012-02-13T16:23:15.408359 #80256] DEBUG -- :   [1m[35m (152.5ms)[0m  CREATE TABLE `dynamic_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `created_at` datetime, `updated_at` datetime, `global` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:23:15.412786 #80256] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_records_values_binaries`[0m
+D, [2012-02-13T16:23:15.566158 #80256] DEBUG -- :   [1m[35m (152.7ms)[0m  CREATE TABLE `dynamic_records_values_binaries` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` blob) ENGINE=InnoDB
+D, [2012-02-13T16:23:15.570583 #80256] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_records_values_booleans`[0m
+D, [2012-02-13T16:23:15.723252 #80256] DEBUG -- :   [1m[35m (152.1ms)[0m  CREATE TABLE `dynamic_records_values_booleans` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:23:15.764493 #80256] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_records_values_datetimes`[0m
+D, [2012-02-13T16:23:16.012461 #80256] DEBUG -- :   [1m[35m (247.2ms)[0m  CREATE TABLE `dynamic_records_values_datetimes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` datetime) ENGINE=InnoDB
+D, [2012-02-13T16:23:16.028896 #80256] DEBUG -- :   [1m[36m (1.9ms)[0m  [1mDROP TABLE `dynamic_records_values_decimals`[0m
+D, [2012-02-13T16:23:16.172323 #80256] DEBUG -- :   [1m[35m (142.8ms)[0m  CREATE TABLE `dynamic_records_values_decimals` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` decimal(10,0)) ENGINE=InnoDB
+D, [2012-02-13T16:23:16.178390 #80256] DEBUG -- :   [1m[36m (2.2ms)[0m  [1mDROP TABLE `dynamic_records_values_floats`[0m
+D, [2012-02-13T16:23:16.395478 #80256] DEBUG -- :   [1m[35m (216.5ms)[0m  CREATE TABLE `dynamic_records_values_floats` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` float) ENGINE=InnoDB
+D, [2012-02-13T16:23:16.400858 #80256] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_records_values_integers`[0m
+D, [2012-02-13T16:23:16.570992 #80256] DEBUG -- :   [1m[35m (169.5ms)[0m  CREATE TABLE `dynamic_records_values_integers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` int(11)) ENGINE=InnoDB
+D, [2012-02-13T16:23:16.576240 #80256] DEBUG -- :   [1m[36m (2.3ms)[0m  [1mDROP TABLE `dynamic_records_values_strings`[0m
+D, [2012-02-13T16:23:16.872063 #80256] DEBUG -- :   [1m[35m (295.2ms)[0m  CREATE TABLE `dynamic_records_values_strings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:23:16.877476 #80256] DEBUG -- :   [1m[36m (2.0ms)[0m  [1mDROP TABLE `dynamic_records_values_texts`[0m
+D, [2012-02-13T16:23:17.021340 #80256] DEBUG -- :   [1m[35m (143.2ms)[0m  CREATE TABLE `dynamic_records_values_texts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` text) ENGINE=InnoDB
+D, [2012-02-13T16:23:17.106457 #80256] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+D, [2012-02-13T16:23:17.257101 #80256] DEBUG -- :   [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+D, [2012-02-13T16:23:17.269132 #80256] DEBUG -- :   [1m[36m (0.3ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+D, [2012-02-13T16:23:17.270914 #80256] DEBUG -- :   [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+D, [2012-02-13T16:23:17.273983 #80256] DEBUG -- :   [1m[36m (2.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'dynamic_record_test_db'[0m
+D, [2012-02-13T16:23:17.275616 #80256] DEBUG -- :   [1m[35m (1.3ms)[0m  TRUNCATE TABLE `dynamic_record_classes`;
+D, [2012-02-13T16:23:17.277383 #80256] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mTRUNCATE TABLE `dynamic_record_field_description`;[0m
+D, [2012-02-13T16:23:17.278943 #80256] DEBUG -- :   [1m[35m (1.3ms)[0m  TRUNCATE TABLE `dynamic_record_fields`;
+D, [2012-02-13T16:23:17.280865 #80256] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mTRUNCATE TABLE `dynamic_records`;[0m
+D, [2012-02-13T16:23:17.282596 #80256] DEBUG -- :   [1m[35m (1.3ms)[0m  TRUNCATE TABLE `dynamic_records_values_binaries`;
+D, [2012-02-13T16:23:17.284445 #80256] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_booleans`;[0m
+D, [2012-02-13T16:23:17.285897 #80256] DEBUG -- :   [1m[35m (1.1ms)[0m  TRUNCATE TABLE `dynamic_records_values_datetimes`;
+D, [2012-02-13T16:23:17.287341 #80256] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_decimals`;[0m
+D, [2012-02-13T16:23:17.289035 #80256] DEBUG -- :   [1m[35m (1.4ms)[0m  TRUNCATE TABLE `dynamic_records_values_floats`;
+D, [2012-02-13T16:23:17.290660 #80256] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_integers`;[0m
+D, [2012-02-13T16:23:17.292590 #80256] DEBUG -- :   [1m[35m (1.5ms)[0m  TRUNCATE TABLE `dynamic_records_values_strings`;
+D, [2012-02-13T16:23:17.294215 #80256] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_texts`;[0m
+D, [2012-02-13T16:23:17.294709 #80256] DEBUG -- :   [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+D, [2012-02-13T16:29:05.152231 #81016] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_record_classes`[0m
+D, [2012-02-13T16:29:05.237118 #81016] DEBUG -- :   [1m[35m (84.1ms)[0m  CREATE TABLE `dynamic_record_classes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime, `behavior_module` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:29:05.303854 #81016] DEBUG -- :   [1m[36m (63.7ms)[0m  [1mDROP TABLE `dynamic_record_field_description`[0m
+D, [2012-02-13T16:29:05.451306 #81016] DEBUG -- :   [1m[35m (139.2ms)[0m  CREATE TABLE `dynamic_record_field_description` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `field_name` varchar(255), `field_kind` varchar(255), `validator` varchar(255), `created_at` datetime, `updated_at` datetime, `valid_choices` text, `css_form_class` varchar(255), `priority` int(11), `title_field` tinyint(1), `css_value_class` varchar(255), `valid_choice_size_rows` int(11) DEFAULT 0, `valid_choice_size_cols` int(11) DEFAULT 0, `valid_choices_size_rows` int(11) DEFAULT 0, `valid_choices_size_cols` int(11) DEFAULT 0) ENGINE=InnoDB
+D, [2012-02-13T16:29:05.456584 #81016] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mDROP TABLE `dynamic_record_fields`[0m
+D, [2012-02-13T16:29:05.591596 #81016] DEBUG -- :   [1m[35m (134.2ms)[0m  CREATE TABLE `dynamic_record_fields` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_id` int(11), `record_field_description_id` int(11), `created_at` datetime, `updated_at` datetime, `value_id` int(11), `value_type` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:29:05.595477 #81016] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mDROP TABLE `dynamic_records`[0m
+D, [2012-02-13T16:29:05.749608 #81016] DEBUG -- :   [1m[35m (153.5ms)[0m  CREATE TABLE `dynamic_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `record_class_id` int(11), `created_at` datetime, `updated_at` datetime, `global` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:29:05.753785 #81016] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_records_values_binaries`[0m
+D, [2012-02-13T16:29:05.915411 #81016] DEBUG -- :   [1m[35m (161.0ms)[0m  CREATE TABLE `dynamic_records_values_binaries` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` blob) ENGINE=InnoDB
+D, [2012-02-13T16:29:05.919185 #81016] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mDROP TABLE `dynamic_records_values_booleans`[0m
+D, [2012-02-13T16:29:06.065174 #81016] DEBUG -- :   [1m[35m (145.2ms)[0m  CREATE TABLE `dynamic_records_values_booleans` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` tinyint(1)) ENGINE=InnoDB
+D, [2012-02-13T16:29:06.068727 #81016] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mDROP TABLE `dynamic_records_values_datetimes`[0m
+D, [2012-02-13T16:29:06.200636 #81016] DEBUG -- :   [1m[35m (131.2ms)[0m  CREATE TABLE `dynamic_records_values_datetimes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` datetime) ENGINE=InnoDB
+D, [2012-02-13T16:29:06.206967 #81016] DEBUG -- :   [1m[36m (2.6ms)[0m  [1mDROP TABLE `dynamic_records_values_decimals`[0m
+D, [2012-02-13T16:29:06.348061 #81016] DEBUG -- :   [1m[35m (140.2ms)[0m  CREATE TABLE `dynamic_records_values_decimals` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` decimal(10,0)) ENGINE=InnoDB
+D, [2012-02-13T16:29:06.352012 #81016] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mDROP TABLE `dynamic_records_values_floats`[0m
+D, [2012-02-13T16:29:06.479681 #81016] DEBUG -- :   [1m[35m (126.8ms)[0m  CREATE TABLE `dynamic_records_values_floats` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` float) ENGINE=InnoDB
+D, [2012-02-13T16:29:06.483453 #81016] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mDROP TABLE `dynamic_records_values_integers`[0m
+D, [2012-02-13T16:29:06.639946 #81016] DEBUG -- :   [1m[35m (156.0ms)[0m  CREATE TABLE `dynamic_records_values_integers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` int(11)) ENGINE=InnoDB
+D, [2012-02-13T16:29:06.643952 #81016] DEBUG -- :   [1m[36m (1.7ms)[0m  [1mDROP TABLE `dynamic_records_values_strings`[0m
+D, [2012-02-13T16:29:06.821209 #81016] DEBUG -- :   [1m[35m (176.7ms)[0m  CREATE TABLE `dynamic_records_values_strings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` varchar(255)) ENGINE=InnoDB
+D, [2012-02-13T16:29:06.825079 #81016] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mDROP TABLE `dynamic_records_values_texts`[0m
+D, [2012-02-13T16:29:06.970954 #81016] DEBUG -- :   [1m[35m (145.3ms)[0m  CREATE TABLE `dynamic_records_values_texts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `value` text) ENGINE=InnoDB
+D, [2012-02-13T16:29:06.973994 #81016] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+D, [2012-02-13T16:29:06.986659 #81016] DEBUG -- :   [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+D, [2012-02-13T16:29:06.988978 #81016] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+D, [2012-02-13T16:29:06.991030 #81016] DEBUG -- :   [1m[35m (0.2ms)[0m  SELECT DATABASE() as db
+D, [2012-02-13T16:29:06.994162 #81016] DEBUG -- :   [1m[36m (2.7ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'dynamic_record_test_db'[0m
+D, [2012-02-13T16:29:06.995900 #81016] DEBUG -- :   [1m[35m (1.3ms)[0m  TRUNCATE TABLE `dynamic_record_classes`;
+D, [2012-02-13T16:29:06.997902 #81016] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mTRUNCATE TABLE `dynamic_record_field_description`;[0m
+D, [2012-02-13T16:29:06.999895 #81016] DEBUG -- :   [1m[35m (1.6ms)[0m  TRUNCATE TABLE `dynamic_record_fields`;
+D, [2012-02-13T16:29:07.001628 #81016] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mTRUNCATE TABLE `dynamic_records`;[0m
+D, [2012-02-13T16:29:07.003706 #81016] DEBUG -- :   [1m[35m (1.6ms)[0m  TRUNCATE TABLE `dynamic_records_values_binaries`;
+D, [2012-02-13T16:29:07.005471 #81016] DEBUG -- :   [1m[36m (1.2ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_booleans`;[0m
+D, [2012-02-13T16:29:07.007413 #81016] DEBUG -- :   [1m[35m (1.5ms)[0m  TRUNCATE TABLE `dynamic_records_values_datetimes`;
+D, [2012-02-13T16:29:07.009238 #81016] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_decimals`;[0m
+D, [2012-02-13T16:29:07.011200 #81016] DEBUG -- :   [1m[35m (1.4ms)[0m  TRUNCATE TABLE `dynamic_records_values_floats`;
+D, [2012-02-13T16:29:07.012818 #81016] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_integers`;[0m
+D, [2012-02-13T16:29:07.014193 #81016] DEBUG -- :   [1m[35m (1.1ms)[0m  TRUNCATE TABLE `dynamic_records_values_strings`;
+D, [2012-02-13T16:29:07.016093 #81016] DEBUG -- :   [1m[36m (1.6ms)[0m  [1mTRUNCATE TABLE `dynamic_records_values_texts`;[0m
+D, [2012-02-13T16:29:07.016592 #81016] DEBUG -- :   [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
