@@ -10,7 +10,7 @@ FactoryGirl.define do
     factory :author do
       field_name "Author"
       field_kind "String"
-      priorty 1
+      priority 1
     end
 
     factory :publication_date do

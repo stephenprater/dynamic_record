@@ -11,7 +11,7 @@ module DynamicRecord
         #these are not user generated table names, so it
         #should be okay to just quote them directly
         case_stmt = "CASE `sq`.`value_type`\n"
-        case_stmt << DynamicRecord::Value::AvailableFieldTypes.collect do |rvt|
+        case_stmt << DynamicRecord::Value.available_types.collect do |rvt|
           "WHEN '#{rvt.to_s}' THEN (SELECT `value` from `#{rvt.table_name}` WHERE `#{rvt.table_name}`.`id` = `sq`.`value_id`)"
         end.join("\n")
         case_stmt << "\nEND AS `value`"

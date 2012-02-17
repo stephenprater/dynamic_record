@@ -11,3 +11,5 @@ module DynamicRecord
   autoload :MaterializedRecord,   'dynamic_record/materialized_record'
   autoload :Value,                'dynamic_record/value'
 end
+
+require 'dynamic_record/rails' if defined? Rails

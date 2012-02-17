@@ -1,5 +1,5 @@
 class DynamicRecord::Entity < DynamicRecord::Base
-  set_table_name :dynamic_record
+  self.table_name = :dynamic_records
 
   belongs_to :record_class,
     :readonly => true,

@@ -1,5 +1,5 @@
 class DynamicRecord::Field < DynamicRecord::Base
-  set_table_name :dynamic_record_fields
+  self.table_name = :dynamic_record_fields
   
   class << self
     def field_type_to_class fk

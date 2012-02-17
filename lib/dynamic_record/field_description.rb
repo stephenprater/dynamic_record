@@ -1,8 +1,10 @@
-class DynamicRecord::FieldDescription < ActiveRecord::Base
-  set_table_name :dynamic_record_field_descriptions
+class DynamicRecord::FieldDescription < DynamicRecord::Base
+  self.table_name = :dynamic_record_field_descriptions
   
   serialize :valid_choices, Array
 
+  #should i normalize some of these empty fields into 
+  #a has_many metadata thing?
   attr_accessible :field_name, :field_kind, :validator, 
     :valid_choices, :priority, :css_value_class, 
     :css_form_class, :title_field, :valid_choices_size_rows,
@@ -20,7 +22,9 @@ class DynamicRecord::FieldDescription < ActiveRecord::Base
 
   validates :field_name, :presence => true
 
-  def method_name
+  alias_attribute :human_attribute_name, :field_name
+  
+  def attribute_name 
     @method_name ||= self.field_name.gsub(/\s/,'').underscore
   end
 

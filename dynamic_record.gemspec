@@ -26,11 +26,17 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '>= 3.1'
   s.add_dependency 'mysql2'
   
-  s.add_development_dependency 'spork'
-  s.add_development_dependency 'ruby-debug'
-  s.add_development_dependency 'rspec'
-  s.add_development_dependency 'pry'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'term-ansicolor'
   s.add_development_dependency 'factory_girl'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'spork'
+  s.add_development_dependency 'database_cleaner'
+  
+  s.add_development_dependency 'ruby-debug'
+  s.add_development_dependency 'pry'
+  
+  s.add_development_dependency 'rb-fsevent'
+  s.add_development_dependency 'guard'
+  s.add_development_dependency 'guard-rspec'
+  s.add_development_dependency 'guard-spork'
+  s.add_development_dependency 'growl'
 end

@@ -1,5 +1,5 @@
 class DynamicRecord::MaterializedRecord < ActiveRecord::Base
-  abstract_class = true
+  self.abstract_class = true
 
   include DynamicRecord::DynamicPersistence
 

@@ -1,5 +1,5 @@
-class DynamicRecord::Class < ActiveRecord::Base
-  set_table_name :dynamic_record_classes
+class DynamicRecord::Class < DynamicRecord::Base
+  self.table_name = :dynamic_record_classes
 
   attr_reader :constant
 
@@ -26,7 +26,8 @@ class DynamicRecord::Class < ActiveRecord::Base
   has_many :field_descriptions,
     :foreign_key => :record_class_id,
     :dependent => :destroy,
-    :class_name => 'record::FieldDescription'
+    :class_name => 'DynamicRecord::FieldDescription',
+    :order => 'priority ASC'
 
   before_validation :set_default_behavior_module
 
@@ -52,18 +53,18 @@ class DynamicRecord::Class < ActiveRecord::Base
     res.many? ? res : res.first
   end
 
-  def human_field_names
+  def human_attribute_names
     field_descriptions.collect(&:field_name)
   end
 
-  def field_names
-    @field_names ||= field_descriptions.collect(&:method_name)
+  def attribute_names 
+    @field_names ||= field_descriptions.collect(&:attribute_name)
   end
 
   def field_map
     h = {}
     field_descriptions.collect do |fd|
-      h[fd.method_name] = fd.id
+      h[fd.attribute_name] = fd.id
     end
     h
   end

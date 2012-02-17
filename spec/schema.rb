@@ -6,7 +6,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.string   "behavior_module"
   end
 
-  create_table "dynamic_record_field_description", :force => true do |t|
+  create_table "dynamic_record_field_descriptions", :force => true do |t|
     t.integer  "record_class_id"
     t.string   "field_name"
     t.string   "field_kind"
