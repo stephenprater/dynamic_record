@@ -9,6 +9,7 @@ module DynamicRecord
 
       module ClassMethods
         def table_name
+          binding.pry
           self.to_s.split("::").collect { |k| k.underscore.pluralize }.join("_")
         end
       end
