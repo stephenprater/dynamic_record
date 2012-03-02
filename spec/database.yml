@@ -10,3 +10,11 @@ dynamic_record:
 dynamic_record_sqlite:
   adapter: sqlite3
   database: 'dynamic_record.sqlite3' 
+
+dynamic_record_error_db:
+  adapter: error_db
+  database: nil
+
+dynamic_record_postgres:
+  adapter: postgres
+  database: dynamic_record_test_db

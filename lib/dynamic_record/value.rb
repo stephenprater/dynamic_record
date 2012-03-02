@@ -12,14 +12,15 @@ module DynamicRecord
 
     def available_types
       @available_types ||= [
-        DynamicRecord::Value::Binary,
-        DynamicRecord::Value::Boolean,
-        DynamicRecord::Value::Datetime,
-        DynamicRecord::Value::Float,
-        DynamicRecord::Value::Integer,
-        DynamicRecord::Value::String,
-        DynamicRecord::Value::Text
+        Value::Binary,
+        Value::Boolean,
+        Value::Datetime,
+        Value::Float,
+        Value::Integer,
+        Value::String,
+        Value::Text
       ]
     end
+    module_function :available_types
   end
 end

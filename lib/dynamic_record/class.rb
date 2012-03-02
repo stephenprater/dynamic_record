@@ -41,7 +41,11 @@ class DynamicRecord::Class < DynamicRecord::Base
   end
 
   def constant
-    Object.const_get self.constant_name
+    begin
+      Object.const_get self.constant_name
+    rescue NameError
+      raise DynamicRecord::MaterializationError, "unsaved class cannot be referenced by constant"
+    end
   end
 
   def all
@@ -84,11 +88,12 @@ class DynamicRecord::Class < DynamicRecord::Base
   end
 
   def reify(ids = nil)
-    return if self.new_record?
+    return nil if self.new_record?
     self.constant_name
+    
     # call the sql which materialize a standard AR style table
     # from the EAV data
-    self.materialize_record(ids)
+    table = self.class.connection.materialize_record(self,ids)
 
     record_class_id = self.id
     begin
@@ -98,14 +103,16 @@ class DynamicRecord::Class < DynamicRecord::Base
       logger.error "Couldn't remove a constant, #{e.message}"
     end
 
+
     record_class = Object.const_set self.dynamic_constant_name, self
     dynamic_record = Class.new(DynamicRecord::DynamicRecord)
     dynamic_record.instance_eval do
-      self.record_class = record_class
       self.set_table_name table_name.intern
+      self.record_class = record_class
     end
     Object.const_set self.constant_name, dynamic_record
   end
+  alias :materialize :reify
 
   accepts_nested_attributes_for :field_descriptions
 end

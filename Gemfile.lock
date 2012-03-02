@@ -6,6 +6,18 @@ PATH
       activesupport (>= 3.1)
       mysql2
 
+PATH
+  remote: /Users/stephenprater/Documents/personal/guard-legacy
+  specs:
+    guard-legacy (0.0.1)
+      guard
+      rb-fsevent-legacy
+
+PATH
+  remote: /Users/stephenprater/Documents/personal/rb-fsevent-legacy
+  specs:
+    rb-fsevent-legacy (0.2.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -75,10 +87,11 @@ DEPENDENCIES
   dynamic_record!
   factory_girl
   growl
-  guard
+  guard-legacy!
   guard-rspec
   guard-spork
   pry
+  rb-fsevent-legacy!
   rspec
   ruby-debug
   spork

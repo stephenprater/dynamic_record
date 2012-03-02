@@ -2,6 +2,7 @@ class DynamicRecord::Field < DynamicRecord::Base
   self.table_name = :dynamic_record_fields
   
   class << self
+    #leverage AR typecasting here
     def field_type_to_class fk
       case fk
       when :boolean

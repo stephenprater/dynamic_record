@@ -10,7 +10,9 @@ describe DynamicRecord::Class do
     @blog.attribute_names.should == ["title", "author", "publication_date", "body_text"]
   end
 
-  it "should've create a constant" do
-    DynamicBlog.should == @blog
+  it "should create a constant when materizalied" do
+    @blog.save
+    lambda { @blog.constant }.should raise_error DynamicRecord::MaterializationError
+    @blog.reify
   end
 end

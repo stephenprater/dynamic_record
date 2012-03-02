@@ -1,3 +1,5 @@
+require 'active_record'
+
 module DynamicRecord
   class Error < ::ActiveRecord::ActiveRecordError; end
   class RecordCreationError < Error; end
@@ -10,6 +12,12 @@ module DynamicRecord
   autoload :FieldDescription,     'dynamic_record/field_description'
   autoload :MaterializedRecord,   'dynamic_record/materialized_record'
   autoload :Value,                'dynamic_record/value'
+
+  autoload :DynamicRecord,        'dynamic_record/dynamic_record'
 end
 
-require 'dynamic_record/rails' if defined? Rails
+if defined? Rails
+  require 'dynamic_record/rails'
+end
+
+require 'dynamic_record/connection_adapters/connection_specification'
