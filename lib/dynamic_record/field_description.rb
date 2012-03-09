@@ -29,7 +29,8 @@ class DynamicRecord::FieldDescription < DynamicRecord::Base
       case fk
       when :boolean
           Boolean
-      when :string, :email, :url, :tel, :password, :search, :text, :file, :hidden, :country, :time_zone
+      when :string, :email, :url, :tel, :password,\
+           :search, :text, :file, :hidden, :country, :time_zone
           String
       when :integer
           Fixnum
@@ -41,10 +42,6 @@ class DynamicRecord::FieldDescription < DynamicRecord::Base
           Range
       when :datetime, :date, :time
           DateTime
-      when :date
-          Date
-      when :time
-          Time
       when :select, :radio, :check_boxes
           Fixnum
       when :matrix
@@ -53,25 +50,8 @@ class DynamicRecord::FieldDescription < DynamicRecord::Base
     end
 
     def value_class_storage fk
-      case fk
-      when :boolean
-          DynamicRecord::Value::Boolean 
-      when :text
-          DynamicRecord::Value::Text
-      when :file
-          DynamicRecord::Value::Binary
-      when :string, :email, :url, :tel, :password, :search, :hidden, \
-        :country, :time_zone, :range, :matrix
-          DynamicRecord::Value::String
-      when :integer, :select, :radio, :check_boxes,
-          DynamicRecord::Value::Integer
-      when :float
-          DynamicRecord::Value::Float
-      when :decimal
-          DynamicRecord::Value::Decimal
-      when :datetime, :date, :time
-          DynamicRecord::Value::Datetime
-      end
+      cnts_name = self.field_type_to_class(fk).to_s
+      DynamicRecord::Value.const_get(cnts_name)
     end
   end
 
@@ -82,7 +62,8 @@ class DynamicRecord::FieldDescription < DynamicRecord::Base
 
   def sql_type
     #look this up on the connection.
-    self.class.value_class_storage(self.field_kind.downcase.intern).sql_type
+    vcs = self.class.value_class_storage(self.field_kind.downcase.intern)
+    vcs.to_sql
   end
 
   #validates with meta_validators

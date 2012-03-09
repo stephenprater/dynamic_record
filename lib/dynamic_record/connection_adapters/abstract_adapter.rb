@@ -81,7 +81,6 @@ module ActiveRecord
         else
           #column_types
           columns = "id INT(11) PRIMARY KEY, "
-          debugger
           columns << dynamic_class.field_descriptions.collect do |fd|
             "#{fd.method_name} #{fd.sql_type}"
           end.join(", ")

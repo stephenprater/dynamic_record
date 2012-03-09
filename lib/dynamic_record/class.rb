@@ -7,7 +7,7 @@ class DynamicRecord::Class < DynamicRecord::Base
   @record_value_types = [
     DynamicRecord::Value::Binary,
     DynamicRecord::Value::Boolean,
-    DynamicRecord::Value::Datetime,
+    DynamicRecord::Value::DateTime,
     DynamicRecord::Value::Float,
     DynamicRecord::Value::Integer,
     DynamicRecord::Value::String,
@@ -103,12 +103,10 @@ class DynamicRecord::Class < DynamicRecord::Base
       logger.error "Couldn't remove a constant, #{e.message}"
     end
 
-
     record_class = Object.const_set self.dynamic_constant_name, self
-    dynamic_record = Class.new(DynamicRecord::DynamicRecord)
-    dynamic_record.instance_eval do
-      self.set_table_name table_name.intern
-      self.record_class = record_class
+    dynamic_record = Class.new(DynamicRecord::DynamicRecord) do |c|
+      c.set_table_name table.name.intern
+      c.record_class = record_class
     end
     Object.const_set self.constant_name, dynamic_record
   end

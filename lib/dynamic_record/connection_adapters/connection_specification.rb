@@ -8,7 +8,7 @@ module ActiveRecord
       class Resolver
         ##
         # Patches into the connection resolver to include the database specific
-        # pivot and DDL calls.
+        # pivot table and DDL calls.
         def resolve_hash_connection_with_materialization(spec)
           spec = spec.symbolize_keys
           begin

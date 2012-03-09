@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.boolean "value"
   end
 
-  create_table "dynamic_records_values_datetimes", :force => true do |t|
+  create_table "dynamic_records_values_date_times", :force => true do |t|
     t.datetime "value"
   end
 

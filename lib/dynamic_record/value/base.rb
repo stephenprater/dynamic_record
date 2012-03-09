@@ -8,11 +8,10 @@ module DynamicRecord
       end
       
       module ClassMethods
-        def sql_type
-          drv = self.to_s.underscore.split('/').last.intern
-          res = self.connection.native_database_types[drv]
-          raise ::TypeError, "couldn't find associted type for #{drv}" unless res
-          res
+        def to_sql 
+          return @sql if @sql
+          @ruby_class ||= self.to_s.underscore.split('/').last.gsub(/_/,'').intern
+          @sql ||= self.connection.type_to_sql(@ruby_class)
         end
 
         def table_name

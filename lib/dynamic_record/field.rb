@@ -1,58 +1,5 @@
 class DynamicRecord::Field < DynamicRecord::Base
   self.table_name = :dynamic_record_fields
-  
-  class << self
-    #leverage AR typecasting here
-    def field_type_to_class fk
-      case fk
-      when :boolean
-          Boolean
-      when :string, :email, :url, :tel, :password, :search, :text, :file, :hidden, :country, :time_zone
-          String
-      when :integer
-          Fixnum
-      when :float
-          Float
-      when :decimal
-          BigDecimal
-      when :range
-          Range
-      when :datetime, :date, :time
-          DateTime
-      when :date
-          Date
-      when :time
-          Time
-      when :select, :radio, :check_boxes
-          Fixnum
-      when :matrix
-          Hash
-      end
-    end
-
-    def value_class_storage fk
-      case fk
-      when :boolean
-          DynamicRecord::Value::Boolean 
-      when :text
-          DynamicRecord::Value::Text
-      when :file
-          DynamicRecord::Value::Binary
-      when :string, :email, :url, :tel, :password, :search, :hidden, \
-        :country, :time_zone, :range, :matrix
-          DynamicRecord::Value::String
-      when :integer, :select, :radio, :check_boxes,
-          DynamicRecord::Value::Integer
-      when :float
-          DynamicRecord::Value::Float
-      when :decimal
-          DynamicRecord::Value::Decimal
-      when :datetime, :date, :time
-          DynamicRecord::Value::Datetime
-      end
-    end
-  end
-
 
   belongs_to :value_field,
     :foreign_key => :value_id,
