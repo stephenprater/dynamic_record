@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'factory_girl'
   s.add_development_dependency 'rspec'
   s.add_development_dependency 'spork'
+  s.add_development_dependency 'rcov'
   s.add_development_dependency 'database_cleaner'
   
   s.add_development_dependency 'ruby-debug'

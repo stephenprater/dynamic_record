@@ -1,5 +1,5 @@
 module DynamicRecord 
-  module DynamicPersistence
+  module Persistence 
     def dynamic_record
       @dynamic_record || @dynamic_record = self.dematerialize
     end

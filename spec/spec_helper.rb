@@ -40,11 +40,9 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  
   load 'dynamic_record.rb'
   FactoryGirl.reload
   ActiveSupport::Dependencies.clear
   DatabaseCleaner.strategy = :truncation
   DatabaseCleaner.clean
 end
-

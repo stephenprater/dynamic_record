@@ -61,6 +61,7 @@ GEM
       method_source (~> 0.7)
       slop (>= 2.4.4, < 3)
     rbx-require-relative (0.0.5)
+    rcov (0.9.11)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
@@ -92,6 +93,7 @@ DEPENDENCIES
   guard-spork
   pry
   rb-fsevent-legacy!
+  rcov
   rspec
   ruby-debug
   spork

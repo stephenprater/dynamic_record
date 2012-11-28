@@ -104,9 +104,9 @@ class DynamicRecord::Class < DynamicRecord::Base
     end
 
     record_class = Object.const_set self.dynamic_constant_name, self
-    dynamic_record = Class.new(DynamicRecord::DynamicRecord) do |c|
-      c.set_table_name table.name.intern
-      c.record_class = record_class
+    dynamic_record = Class.new(DynamicRecord::DynamicRecord) do |klass|
+      klass.table_name = table.name.intern
+      klass.record_class = record_class
     end
     Object.const_set self.constant_name, dynamic_record
   end

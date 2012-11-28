@@ -4,7 +4,8 @@ module DynamicRecord
   class Error < ::ActiveRecord::ActiveRecordError; end
   class RecordCreationError < Error; end
   class MaterializationError < Error; end
-
+  
+  autoload :Persistence,          'dynamic_record/persistence'
   autoload :Base,                 'dynamic_record/base'
   autoload :Class,                'dynamic_record/class'
   autoload :Entity,               'dynamic_record/entity'
